@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Bicycle",
+        "desc": "A bicycle. What more do you want?",
+        "price": 50,
+        "imgLink": "http://1.bp.blogspot.com/-tRNvkgPUsY4/UJLZxZrVzBI/AAAAAAAABu0/-El0qIw7WXk/s1600/Torpado+amateur+yellow+bicycle+bike.jpg"
+    },
+    {
+        "name": "Playstation 5",
+        "desc": "OMG it's the mythical Playstation 5!",
+        "price": 1000000,
+        "imgLink": "https://assets-prd.ignimgs.com/2020/06/12/playstation-5-button-02-1591933908407.jpg"
+    }
+]
