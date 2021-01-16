@@ -1,12 +1,23 @@
 import Head from 'next/head'
-
-export default function Home() {
+import fs from 'fs'
+import path from 'path'
+import Listing from '../components/listing'
+import {MongoClient} from 'mongodb'
+export default function Home({dummyJson}) {
   return (
     <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <header>
+        The Shopmoore
+      </header>
+      {dummyJson.map((listing) => {
+        return (
+        <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} />
+        )
+      })}
     </div>
   )
 }
