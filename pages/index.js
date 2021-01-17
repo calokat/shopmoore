@@ -3,6 +3,17 @@ import fs from 'fs'
 import path from 'path'
 import Listing from '../components/listing'
 import {MongoClient} from 'mongodb'
+
+function serializeFields(fields)
+{
+  let serialized = {};
+  for (let f of fields) {
+    console.log(f);
+    serialized[f.name] = f.value;
+  }
+  return serialized;
+}
+
 export default function Home({dummyJson}) {
   return (
     <div>
