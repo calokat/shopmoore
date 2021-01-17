@@ -14,6 +14,20 @@ function serializeFields(fields)
   return serialized;
 }
 
+function addListing(e) {
+  e.preventDefault();
+
+  let data = serializeFields(document.querySelector("form").elements);
+  console.log(data);
+  // with help from https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+  fetch('/api/addListing', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then((response) => {
+    response.json().then(json => console.log(json));
+  })
+}
+
 export default function Home({dummyJson}) {
   return (
     <div>
