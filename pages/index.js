@@ -43,7 +43,7 @@ export default function Home({dummyJson}) {
         <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} />
         )
       })}
-      <form action="/api/addListing">
+      <form onSubmit={addListing}>
         <label htmlFor="name">Name</label>
         <input id="name" name="name" type="text"></input><br />
         <label htmlFor="desc">Description</label>
