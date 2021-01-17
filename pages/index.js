@@ -19,8 +19,14 @@ export default function Home({dummyJson}) {
         )
       })}
       <form action="/api/addListing">
+        <label htmlFor="name">Name</label>
+        <input id="name" name="name" type="text"></input><br />
+        <label htmlFor="desc">Description</label>
+        <input id="desc" name="desc" type="text"></input><br />
         <label htmlFor="price">Price</label>
-        <input id="price" name="price" type="number"></input>
+        <input id="price" name="price" type="number"></input><br />
+        <label htmlFor="imgLink">Image URL</label>
+        <input id="imgLink" name="imgLink" type="url"></input><br />
         <input type="submit"></input>
       </form>
     </div>
