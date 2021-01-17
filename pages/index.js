@@ -57,7 +57,7 @@ export default function Home({listings}) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 // Connection URL
   const url = 'mongodb://localhost:27017';
 
