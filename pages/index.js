@@ -27,7 +27,7 @@ function addListing(e) {
   })
 }
 
-export default function Home({dummyJson}) {
+export default function Home({listings}) {
   return (
     <div>
       <Head>
@@ -37,7 +37,7 @@ export default function Home({dummyJson}) {
       <header>
         The Shopmoore
       </header>
-      {dummyJson.map((listing) => {
+      {listings.map((listing) => {
         return (
         <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} />
         )
@@ -58,30 +58,19 @@ export default function Home({dummyJson}) {
 }
 
 export async function getStaticProps() {
-  const dummyData =  fs.readFileSync(path.join(process.cwd(), "/data/dummy.json"));
-  const dummyJson = JSON.parse(dummyData.toString());
-  console.log(dummyJson);
-
 // Connection URL
-const url = 'mongodb://localhost:27017';
- 
-// Database Name
-const dbName = 'myproject';
- 
-// Use connect method to connect to the server
-MongoClient.connect(url, function(err, client) {
-  // assert.equal(null, err);
-  console.log("I am awesome");
- 
-  const db = client.db(dbName);
- 
-  client.close();
-});
+  const url = 'mongodb://localhost:27017';
 
+// Use connect method to connect to the server
+  let mdbClient = await MongoClient.connect(url);
+  const db = mdbClient.db("test");
+
+  let listings = await db.collection("listings").find({}).toArray();
+  for (let l of listings) {l._id = null}
+  console.log(listings);
   return {
-    props:
-    {
-      dummyJson
+    props: {
+      listings
     }
-  } 
+  }
 }
