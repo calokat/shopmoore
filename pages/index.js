@@ -16,7 +16,7 @@ export default function Home({listings}) {
       </header>
       {listings.map((listing) => {
         return (
-        <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} />
+        <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} />
         )
       })}
     <Link href="/addListing">Add Listing</Link>
@@ -25,6 +25,8 @@ export default function Home({listings}) {
 }
 
 export async function getServerSideProps() {
+// Starter code for using the mongodb package is from https://www.npmjs.com/package/mongodb
+
 // Connection URL
   const url = 'mongodb://localhost:27017';
 
