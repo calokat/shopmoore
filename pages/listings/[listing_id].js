@@ -3,7 +3,7 @@ import {MongoClient} from 'mongodb'
 import Listing from '../../components/listing'
 import bson from 'bson'
 export default function ListingPage({listing}) {
-    return <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} />
+    return <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} />
 }
 
 export async function getServerSideProps(ctx) {
