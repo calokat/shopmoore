@@ -10,6 +10,7 @@ export default function Home({listings}) {
   let [sortByVal, setSortByVal] = useState("low-high");
   let [sortWithPrefix, setSortWithPrefix] = useState("Alphabetically - ");
   let [sortedListings, setSortedListings] = useState(listings);
+  let [shouldSort, setShouldSort] = useState(false);
   useEffect(() => {
     if (sortWithVal == "name") {
       setSortWithPrefix("Alphabetically - ");
@@ -18,6 +19,30 @@ export default function Home({listings}) {
       setSortWithPrefix("");
     }
   });
+  useEffect(() => {
+    if (shouldSort) {
+      sort();
+    }
+    return () => {
+      setShouldSort(false);
+    }
+  },[shouldSort]);
+  function sort() {
+    setSortedListings(sortedListings.sort((l1, l2) => {
+      let [a1, a2] = [l1[sortWithVal], l2[sortWithVal]];
+      let compareModifier = (sortByVal === "low-high" ? 1 : -1);
+      if (a1 < a2) {
+        return -1 * compareModifier;
+      }
+      if (a2 < a1) {
+        return 1 * compareModifier;
+      }
+      else {
+        return 0;
+      }
+    }))
+  }
+
   return (
     <div>
       <Head>
@@ -37,19 +62,7 @@ export default function Home({listings}) {
         <option value="high-low">{sortWithPrefix}Highest to Lowest</option>
       </select>
       <button onClick={() => {
-    setSortedListings(sortedListings.sort((l1, l2) => {
-      let [a1, a2] = [l1[sortWithVal], l2[sortWithVal]];
-      let compareModifier = (sortByVal === "low-high" ? 1 : -1);
-      if (a1 < a2) {
-        return -1 * compareModifier;
-      }
-      if (a2 < a1) {
-        return 1 * compareModifier;
-      }
-      else {
-        return 0;
-      }
-    }))
+        setShouldSort(true);
   }}>Sort</button>
       {sortedListings.map((listing, i) => {
         return (
