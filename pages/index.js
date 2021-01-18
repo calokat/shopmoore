@@ -14,9 +14,9 @@ export default function Home({listings}) {
       <header>
         The Shopmoore
       </header>
-      {listings.map((listing) => {
+      {listings.map((listing, i) => {
         return (
-        <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} />
+        <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} key={i} />
         )
       })}
     <Link href="/addListing">Add Listing</Link>
