@@ -16,9 +16,10 @@ export async function getServerSideProps(ctx) {
     let mdbClient = await MongoClient.connect(url);
     const db = mdbClient.db("test");
     if (listing_id.length !== 24 || !bson.ObjectId.isValid(listing_id)) {
-        return {props: {
-            error: 404
-        }}
+        return {
+            props: {
+                error: 404
+            }}
     }
     const hashedID = bson.ObjectId.createFromHexString(listing_id);
     let potentialListing = await db.collection("listings").find({_id: hashedID}).toArray();
@@ -31,8 +32,9 @@ export async function getServerSideProps(ctx) {
         }
     }
     else {
-        return {props: {
-            error: 404
-        }}
+        return {
+            props: {
+                error: 404
+            }}
     }
 }
