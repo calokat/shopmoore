@@ -33,7 +33,7 @@ export async function getServerSideProps() {
   const db = mdbClient.db("test");
 
   let listings = await db.collection("listings").find({}).toArray();
-  for (let l of listings) {l._id = null}
+  for (let l of listings) {l._id = l._id.toHexString()}
   console.log(listings);
   return {
     props: {
