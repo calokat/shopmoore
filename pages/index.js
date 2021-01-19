@@ -97,7 +97,7 @@ export default function Home({listings}) {
       <button onClick={() => {
         setShouldSort(true);
   }}>Sort</button>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         {sortedListings.map((listing, i) => {
           return (
           <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} category={listing.category} key={i} />
