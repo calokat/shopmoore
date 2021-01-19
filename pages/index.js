@@ -93,7 +93,7 @@ export default function Home({listings}) {
   }}>Sort</button>
       {sortedListings.map((listing, i) => {
         return (
-        <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} key={i} />
+        <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} category={listing.category} key={i} />
         )
       })}
     <Link href="/addListing">Add Listing</Link>

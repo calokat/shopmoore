@@ -7,6 +7,7 @@ export default function Listing(props) {
                 <div>
                     <h1>{props.name}</h1>
                     <p>{props.desc}</p>
+                    <p>Category: {props.category}</p>
                     <p>${props.price}</p>
                     <img src={props.imgLink}></img>
                 </div>
