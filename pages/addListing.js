@@ -27,9 +27,6 @@ function toAPI(e) {
 export default function AddListing(props) {
     return (
     <>
-        <h1 className="text-3xl">
-            <Link href="/">&larr; Go to home</Link><br />
-        </h1>
         <form onSubmit={toAPI}>
             <label htmlFor="name">Name</label>
             <input id="name" name="name" type="text"></input><br />
