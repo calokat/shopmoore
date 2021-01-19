@@ -13,6 +13,7 @@ export default function Home({listings}) {
   let [shouldSort, setShouldSort] = useState(false);
   let [shouldFilter, setShouldFilter] = useState(false);
   let [category, setCategory] = useState("");
+  let [canResetFilters, setCanResetFilters] = useState(false);
   useEffect(() => {
     if (sortWithVal == "name") {
       setSortWithPrefix("Alphabetically - ");
@@ -54,12 +55,19 @@ export default function Home({listings}) {
   })
 
   function filter() {
+    setCanResetFilters(true);
     console.log("Original listing count is " + listings.length);
     setSortedListings(sortedListings.filter((sl) => {
       console.log(sl.category);
       console.log("Input category is " + category);
       return sl.category == category;
     }))
+  }
+
+  function resetFilters() {
+    setCanResetFilters(false);
+    setSortedListings(listings);
+    document.querySelector("#category").value = "";
   }
 
   return (
@@ -75,6 +83,7 @@ export default function Home({listings}) {
         setSortedListings(listings);
         setShouldFilter(true);
       }}>Filter</button>
+      {canResetFilters ? <button onClick={resetFilters}>Reset Filters</button> : null}
 
       <h1>Sort Menu</h1>
       <select id="sortWith" onChange={(e) => {setSortWithVal(e.target.options[e.target.selectedIndex].value);}}>
