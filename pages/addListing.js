@@ -19,7 +19,7 @@ function toAPI(e) {
       method: 'POST',
       body: JSON.stringify(data)
     }).then((response) => {
-      response.json().then(json => console.log(json));
+      response.json().then(json => document.querySelector("#status").innerHTML = `&#10003; Success! Your listing for ${json.name} has been created! <a href="/listings/${json._id}">View Listing</a>`);
     })
   }
   
@@ -27,6 +27,7 @@ function toAPI(e) {
 export default function AddListing(props) {
     return (
     <>
+    <div id="status"></div>
         <form onSubmit={toAPI}>
             <label htmlFor="name">Name</label>
             <input id="name" name="name" type="text"></input><br />
