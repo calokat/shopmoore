@@ -68,9 +68,6 @@ export default function Home({listings}) {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="text-5xl mt-5 ml-5">
-        The Shopmoore
-      </header>
 
       <h1>Filter Menu</h1>
       <input type="text" defaultValue="Enter category" id="category" onInput={(e) => {setCategory(e.target.value);}}></input>
