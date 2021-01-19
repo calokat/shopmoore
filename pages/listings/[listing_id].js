@@ -31,6 +31,7 @@ export default function ListingPage({error, listing}) {
                 <br /><br />
                 <p>Price:</p>
                 <p>${listing.price}</p>
+                <button className="pl-5 pr-5 pt-2 pb-2">&#x1f6d2; Buy Now!</button>
             </div>
         </div>
     </>
