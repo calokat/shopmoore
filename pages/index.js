@@ -91,11 +91,13 @@ export default function Home({listings}) {
       <button onClick={() => {
         setShouldSort(true);
   }}>Sort</button>
-      {sortedListings.map((listing, i) => {
-        return (
-        <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} category={listing.category} key={i} />
-        )
-      })}
+      <div className="grid grid-cols-3 gap-4">
+        {sortedListings.map((listing, i) => {
+          return (
+          <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} category={listing.category} key={i} />
+          )
+        })}
+      </div>
     <Link href="/addListing">Add Listing</Link>
     </div>
   )
