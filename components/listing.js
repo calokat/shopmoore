@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Listing(props) {
     return (
         <>
-            <div>
+            <div className="ml-0.5 mb-0.5">
                 <div className="bg-black text-white"><Link href = {`/listings/${props._id}`}>{props.name}</Link></div> 
                 <div className="border-4 border-black flex">
                 <Link href = {`/listings/${props._id}`}><img src={props.imgLink} className="w-48 h-48"></img></Link>
