@@ -100,7 +100,7 @@ export default function Home({listings}) {
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         {sortedListings.map((listing, i) => {
           return (
-          <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} category={listing.category} key={i} />
+          <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} category={listing.category} email={listing.email} key={i} />
           )
         })}
       </div>
