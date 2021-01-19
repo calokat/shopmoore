@@ -1,4 +1,9 @@
 import Link from 'next/link'
+import { useState } from 'react';
+export default function AddListing(props) {
+    
+    let [statusName, setStatusName] = useState("");
+    let [statusId, setStatusId] = useState("");
 function serializeFields(fields)
 {
   let serialized = {};
