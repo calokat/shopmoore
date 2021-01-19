@@ -11,6 +11,8 @@ export default function Home({listings}) {
   let [sortWithPrefix, setSortWithPrefix] = useState("Alphabetically - ");
   let [sortedListings, setSortedListings] = useState(listings);
   let [shouldSort, setShouldSort] = useState(false);
+  let [shouldFilter, setShouldFilter] = useState(false);
+  let [category, setCategory] = useState("");
   useEffect(() => {
     if (sortWithVal == "name") {
       setSortWithPrefix("Alphabetically - ");
@@ -42,6 +44,23 @@ export default function Home({listings}) {
       }
     }))
   }
+  useEffect(() => {
+    if (shouldFilter) {
+      filter();
+    }
+    return () => {
+      setShouldFilter(false);
+    }
+  })
+
+  function filter() {
+    console.log("Original listing count is " + listings.length);
+    setSortedListings(sortedListings.filter((sl) => {
+      console.log(sl.category);
+      console.log("Input category is " + category);
+      return sl.category == category;
+    }))
+  }
 
   return (
     <div>
@@ -52,6 +71,14 @@ export default function Home({listings}) {
       <header>
         The Shopmoore
       </header>
+
+      <h1>Filter Menu</h1>
+      <input type="text" defaultValue="Enter category" id="category" onInput={(e) => {setCategory(e.target.value);}}></input>
+      <button onClick={(e) => {
+        setSortedListings(listings);
+        setShouldFilter(true);
+      }}>Filter</button>
+
       <h1>Sort Menu</h1>
       <select id="sortWith" onChange={(e) => {setSortWithVal(e.target.options[e.target.selectedIndex].value);}}>
         <option value="name">Name</option>
