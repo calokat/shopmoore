@@ -4,21 +4,25 @@ import {MongoClient} from 'mongodb'
 import Listing from '../../components/listing'
 import bson from 'bson'
 import Link from 'next/link'
+import Head from 'next/head'
 export default function ListingPage({error, listing}) {
     if (error) {
         return <Error statusCode={error} />
     }
     return ( 
     <>
-    <div className="ml-16">
-        <h1 className="text-3xl">
-            <Link href="/">&larr; Go to home</Link><br />
-        </h1>
-        <span className="text-7xl">
-            {listing.name}
-        </span>
-        <p className="text-3xl">Category: {listing.category}</p>
-    </div>
+        <Head>
+            <title>{listing.name} Listing</title>
+        </Head>
+        <div className="ml-16">
+            <h1 className="text-3xl">
+                <Link href="/">&larr; Go to home</Link><br />
+            </h1>
+            <span className="text-7xl">
+                {listing.name}
+            </span>
+            <p className="text-3xl">Category: {listing.category}</p>
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-2">
             <img src={listing.imgLink} className="ml-16"></img>
             <div className="text-right text-3xl mr-16">
