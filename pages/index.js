@@ -104,7 +104,7 @@ export default function Home({listings}) {
           )
         })}
       </div>
-    <div className="bg-black text-white w-max p-0.5 mt-5 ml-5 hover:underline"><Link href="/addListing">Add Listing</Link></div>
+    <button><Link href="/addListing">Add Listing</Link></button>
     </div>
   )
 }
