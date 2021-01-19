@@ -11,8 +11,8 @@ export default function ListingPage({error, listing}) {
     return ( 
     <>
     <div className="ml-16">
-        <h1>
-            <Link href="/">{"<- Go to home"}</Link><br />
+        <h1 className="text-3xl">
+            <Link href="/">&larr; Go to home</Link><br />
         </h1>
         <span className="text-7xl">
             {listing.name}
