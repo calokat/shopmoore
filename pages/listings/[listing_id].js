@@ -3,11 +3,34 @@ import Error from 'next/error'
 import {MongoClient} from 'mongodb'
 import Listing from '../../components/listing'
 import bson from 'bson'
+import Link from 'next/link'
 export default function ListingPage({error, listing}) {
     if (error) {
         return <Error statusCode={error} />
     }
-    return <Listing name={listing.name} price={listing.price} imgLink={listing.imgLink} desc={listing.desc} _id={listing._id} />
+    return ( 
+    <>
+    <div className="ml-16">
+        <h1>
+            <Link href="/">{"<- Go to home"}</Link><br />
+        </h1>
+        <span className="text-7xl">
+            {listing.name}
+        </span>
+        <p className="text-3xl">Category: {listing.category}</p>
+    </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+            <img src={listing.imgLink} className="ml-16"></img>
+            <div className="text-right text-3xl mr-16">
+                <p>Description:</p>
+                <p className="">{listing.desc}</p>
+                <br /><br />
+                <p>Price:</p>
+                <p>${listing.price}</p>
+            </div>
+        </div>
+    </>
+    )
 }
 
 export async function getServerSideProps(ctx) {
