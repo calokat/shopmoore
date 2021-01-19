@@ -38,6 +38,8 @@ export default function AddListing(props) {
             <input id="price" name="price" type="number"></input><br />
             <label htmlFor="imgLink">Image URL</label>
             <input id="imgLink" name="imgLink" type="url"></input><br />
+            <label htmlFor="email">Seller Email</label>
+            <input id="email" name="email" type="email"></input><br />
             <input type="submit"></input>
         </form>
     </>
