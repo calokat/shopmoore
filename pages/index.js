@@ -78,7 +78,7 @@ export default function Home({listings}) {
       </Head>
 
       <h1>Filter Menu</h1>
-      <input type="text" defaultValue="Enter category" id="category" onInput={(e) => {setCategory(e.target.value);}}></input>
+      <input type="text" placeholder="Enter category" id="category" onInput={(e) => {setCategory(e.target.value);}}></input>
       <button onClick={(e) => {
         setSortedListings(listings);
         setShouldFilter(true);
