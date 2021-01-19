@@ -68,7 +68,7 @@ export default function Home({listings}) {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
+      <header className="text-5xl mt-5 ml-5">
         The Shopmoore
       </header>
 
