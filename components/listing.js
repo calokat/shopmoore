@@ -11,6 +11,8 @@ export default function Listing(props) {
                         <p>Category: {props.category}</p>
                         <p>Description: {props.desc}</p>
                         <p>${props.price}</p>
+                        <p>Seller email:</p> 
+                        <a href={`mailto:${props.email}`} className="hover:underline">{props.email}</a>
                     </div>
                 </div>
             </div>
