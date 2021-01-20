@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useState } from 'react';
 import StatusBar from '../components/statusBar'
+import Head from 'next/head'
 export default function AddListing(props) {
     
     let [statusName, setStatusName] = useState("");
@@ -35,6 +36,7 @@ export default function AddListing(props) {
       
     return (
     <>
+        <Head><title>Add Listing</title></Head>
         <StatusBar statusId={statusId} statusName={statusName}/>
         <form onSubmit={toAPI}>
             <label htmlFor="name">Name</label>
