@@ -36,7 +36,7 @@ export default function ListingPage({error, listing}) {
 }
 
 export async function getServerSideProps(ctx) {
-    const url = 'mongodb://localhost:27017';
+    const url = `mongodb+srv://caleb_katzenstein:${process.env.MONGODB_PASS}@listings.j81m2.mongodb.net/test?retryWrites=true&w=majority`;
     const {listing_id} = ctx.query;
     let mdbClient = await MongoClient.connect(url);
     const db = mdbClient.db("test");

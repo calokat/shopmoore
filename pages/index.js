@@ -103,10 +103,12 @@ export async function getServerSideProps() {
 // Starter code for using the mongodb package is from https://www.npmjs.com/package/mongodb
 
 // Connection URL
-  const url = 'mongodb://localhost:27017';
+  const url = `mongodb+srv://caleb_katzenstein:${process.env.MONGODB_PASS}@listings.j81m2.mongodb.net/test?retryWrites=true&w=majority`;
 
 // Use connect method to connect to the server
-  let mdbClient = await MongoClient.connect(url);
+  let mdbClient = await MongoClient.connect(url, {
+    
+  });
   const db = mdbClient.db("test");
 
   let listings = await db.collection("listings").find({}).toArray();

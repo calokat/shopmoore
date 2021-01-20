@@ -1,7 +1,7 @@
 import {MongoClient} from 'mongodb'
 
 export default function handler(req, res) {
-    MongoClient.connect('mongodb://localhost:27017', (err, client) => {
+    MongoClient.connect(`mongodb+srv://caleb_katzenstein:${process.env.MONGODB_PASS}@listings.j81m2.mongodb.net/test?retryWrites=true&w=majority`, (err, client) => {
         let data = JSON.parse(req.body);
         let {name} = data;
         console.log(data);
