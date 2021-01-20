@@ -33,6 +33,10 @@ export default function Home({listings}) {
   function sort() {
     setSortedListings(sortedListings.sort((l1, l2) => {
       let [a1, a2] = [l1[sortWithVal], l2[sortWithVal]];
+      if (sortWithVal === "price") {
+        a1 = Number.parseFloat(a1);
+        a2 = Number.parseFloat(a2);
+      }
       let compareModifier = (sortByVal === "low-high" ? 1 : -1);
       if (a1 < a2) {
         return -1 * compareModifier;
