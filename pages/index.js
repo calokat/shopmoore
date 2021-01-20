@@ -87,14 +87,13 @@ export default function Home({listings}) {
         setSortedListings(listings);
         setShouldFilter(true);
       }}>Filter</button>
-      {canResetFilters ? <button onClick={resetFilters}>Reset Filters</button> : null}
+      {canResetFilters ? <button onClick={resetFilters}>Reset Filters</button> : null}<br />
 
-      <h1>Sort Menu</h1>
-      <select id="sortWith" onChange={(e) => {setSortWithVal(e.target.options[e.target.selectedIndex].value);}}>
+      Sort {"    "}<select id="sortWith" onChange={(e) => {setSortWithVal(e.target.options[e.target.selectedIndex].value);}}>
         <option value="name">Name</option>
         <option value="price">Price</option>
-      </select>
-      <select id="sortBy" onChange={(e) => {setSortByVal(e.target.options[e.target.selectedIndex].value);}}>
+      </select>{"    "}
+      by {"    "}<select id="sortBy" onChange={(e) => {setSortByVal(e.target.options[e.target.selectedIndex].value);}}>
         <option value="low-high">{sortWithPrefix}Lowest to Highest</option>
         <option value="high-low">{sortWithPrefix}Highest to Lowest</option>
       </select>
