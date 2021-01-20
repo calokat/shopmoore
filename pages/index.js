@@ -108,7 +108,6 @@ export default function Home({listings}) {
           )
         })}
       </div>
-    <button><Link href="/addListing">Add Listing</Link></button>
     </div>
   )
 }
