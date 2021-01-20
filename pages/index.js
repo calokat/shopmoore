@@ -5,6 +5,8 @@ import {MongoClient} from 'mongodb'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import SortMenu from '../components/sortMenu'
+import FilterMenu from '../components/filterMenu'
+
 export default function Home({listings}) {
   let [sortWithVal, setSortWithVal] = useState("name");
   let [sortByVal, setSortByVal] = useState("low-high");
@@ -81,13 +83,10 @@ export default function Home({listings}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Filter Menu</h1>
-      <input type="text" placeholder="Enter category" id="category" onInput={(e) => {setCategory(e.target.value);}}></input>
-      <button onClick={(e) => {
+      <FilterMenu onCategoryInput={(e) => {setCategory(e.target.value);}} onFilter={(e) => {
         setSortedListings(listings);
         setShouldFilter(true);
-      }}>Filter</button>
-      {canResetFilters ? <button onClick={resetFilters}>Reset Filters</button> : null}<br />
+      }} canResetFilters={canResetFilters} resetFilters={resetFilters}  /> <br />
       <SortMenu onSortWithChange={(e) => {setSortWithVal(e.target.options[e.target.selectedIndex].value);}} onSortByChange={(e) => {setSortByVal(e.target.options[e.target.selectedIndex].value);}} sortWithPrefix={sortWithPrefix} onSort={() => {setShouldSort(true);}} />
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         {sortedListings.map((listing, i) => {
