@@ -39,6 +39,10 @@ export default function Home({listings}) {
         a1 = Number.parseFloat(a1);
         a2 = Number.parseFloat(a2);
       }
+      else if (sortWithVal === "name") {
+        a1 = a1.toLowerCase();
+        a2 = a2.toLowerCase();
+      }
       let compareModifier = (sortByVal === "low-high" ? 1 : -1);
       if (a1 < a2) {
         return -1 * compareModifier;
