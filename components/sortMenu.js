@@ -9,7 +9,7 @@ export default function SortMenu(props) {
                     <option value="low-high">{props.sortWithPrefix}Lowest to Highest</option>
                     <option value="high-low">{props.sortWithPrefix}Highest to Lowest</option>
                 </select>
-            <button onClick={props.onSort}>
+            <button onClick={props.onSort} className="ml-5">
                 Sort
             </button>
         </>

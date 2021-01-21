@@ -7,6 +7,6 @@ header {
     font-family: 'Homemade Apple', cursive;
 }
 
-button {
-    @apply bg-black text-white w-max p-0.5 mt-5 ml-5 hover:underline;
+button, .btn {
+    @apply bg-black text-white w-max p-0.5 hover:underline;
 }
