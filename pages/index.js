@@ -16,6 +16,8 @@ export default function Home({listings}) {
   let [shouldFilter, setShouldFilter] = useState(false);
   let [category, setCategory] = useState("");
   let [canResetFilters, setCanResetFilters] = useState(false);
+
+  // This controls what the 'sort by' dropdown options say.
   useEffect(() => {
     if (sortWithVal == "name") {
       setSortWithPrefix("Alphabetically - ");
@@ -24,6 +26,7 @@ export default function Home({listings}) {
       setSortWithPrefix("");
     }
   });
+  // this fires only when shouldSort changes
   useEffect(() => {
     if (shouldSort) {
       sort();
@@ -76,6 +79,7 @@ export default function Home({listings}) {
 
   function resetFilters() {
     setCanResetFilters(false);
+    // restore all of the listings
     setSortedListings(listings);
     document.querySelector("#category").value = "";
   }
@@ -103,6 +107,8 @@ export default function Home({listings}) {
   )
 }
 
+// This fires before the page is rendered.
+// Its return value is passed in as props to the page.
 export async function getServerSideProps() {
 // Starter code for using the mongodb package is from https://www.npmjs.com/package/mongodb
 

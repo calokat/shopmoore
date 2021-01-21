@@ -5,6 +5,10 @@ import Listing from '../../components/listing'
 import bson from 'bson'
 import Link from 'next/link'
 import Head from 'next/head'
+
+// This is basically a 'template' for each item's page.
+// The listing_id would be the part of the URL after '/listings/'
+// It is a stringified MongoDB ObjectID 
 export default function ListingPage({error, listing}) {
     if (error) {
         return <Error statusCode={error} />
@@ -36,11 +40,14 @@ export default function ListingPage({error, listing}) {
     )
 }
 
+// This fires before the page is rendered.
+// Its return value is passed in as props to the page.
 export async function getServerSideProps(ctx) {
     const url = `mongodb+srv://caleb_katzenstein:${process.env.MONGODB_PASS}@listings.j81m2.mongodb.net/test?retryWrites=true&w=majority`;
     const {listing_id} = ctx.query;
     let mdbClient = await MongoClient.connect(url);
     const db = mdbClient.db("test");
+    // Some validation, in case someone decides to edit the URL directly.
     if (listing_id.length !== 24 || !bson.ObjectId.isValid(listing_id)) {
         return {
             props: {
@@ -52,6 +59,8 @@ export async function getServerSideProps(ctx) {
     let listing;
     if (potentialListing.length !== 0) {
         listing = potentialListing[0];
+        // listing_id is a string, while _id as is is a binary blob, which React cannot parse
+        // so we replace _id with listing_id, knowing that we can easily get one from the other 
         listing._id = listing_id;
         return {
             props: {listing}
