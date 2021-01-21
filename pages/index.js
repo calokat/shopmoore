@@ -79,7 +79,7 @@ export default function Home({listings}) {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>The Shopmoore</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
