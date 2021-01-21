@@ -38,20 +38,20 @@ export default function AddListing(props) {
     <>
         <Head><title>Add Listing</title></Head>
         <StatusBar statusId={statusId} statusName={statusName}/>
-        <form onSubmit={toAPI}>
-            <label htmlFor="name">Name</label>
-            <input id="name" name="name" type="text"></input><br />
-            <label htmlFor="desc">Description</label>
-            <input id="desc" name="desc" type="text"></input><br />
-            <label htmlFor="category">Category</label>
-            <input id="category" name="category" type="text"></input><br />
-            <label htmlFor="price">Price</label>
-            <input id="price" name="price" type="number"></input><br />
-            <label htmlFor="imgLink">Image URL</label>
+        <form className="text-3xl" onSubmit={toAPI}>
+            <label htmlFor="name">Name</label>{' '}
+            <input required id="name" name="name" type="text"></input><br />
+            <label htmlFor="desc">Description</label>{' '}
+            <input required id="desc" name="desc" type="text"></input><br />
+            <label htmlFor="category">Category</label>{' '}
+            <input required id="category" name="category" type="text"></input><br />
+            <label htmlFor="price">Price</label>{' '}
+            <input required id="price" name="price" type="number"></input><br />
+            <label htmlFor="imgLink">Image URL (optional)</label>{' '}
             <input id="imgLink" name="imgLink" type="url"></input><br />
-            <label htmlFor="email">Seller Email</label>
-            <input id="email" name="email" type="email"></input><br />
-            <input type="submit"></input>
+            <label htmlFor="email">Seller Email</label>{' '}
+            <input required id="email" name="email" type="email"></input><br />
+            <input className="btn" type="submit" value="Add Listing"></input>
         </form>
     </>
     )
